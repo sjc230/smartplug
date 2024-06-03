@@ -14,7 +14,7 @@ broker_address = "sensorweb.us"
 broker_port = 1883
 # MQTT Broker 用户名
 broker_username = "algtest"
-broker_username = "smart_test"
+# broker_username = "smart_test"
 # MQTT Broker 密码
 broker_password = "sensorweb711"
 # broker_password = "test777"
