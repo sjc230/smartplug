@@ -1,55 +1,61 @@
-# 请用python语言完成如下需求的代码：
-# 需要通过mqtt远程控制一个插座的开关，要求可以系统的terminal中提示用户输入控制命令交互来控制。
-# 首先向用户请求输入开关的ID号作为MQTT的topic，然后输入开关命令，接收到用户输入的命令后则将该命令通过mqtt发送Qos=1的消息。
-# 接着等待远程发回执行结果命令，该命令的topic为ID号+“result”，payload为执行结果，接收到返回命令后打印输出结果。若超过10秒未收到执行结果，则输出超时信息并结束等待。
-# 结束如此一次完整的交互后，重新进入等待下一轮交互状态。
+# Please use python language to complete the code for the following requirements:
+# It is necessary to remotely control the switch of a socket through mqtt, and it is required to 
+#   prompt the user to enter a control command interactively in the terminal of the system.
+# First, the user is requested to enter the ID number of the switch as the MQTT topic, 
+#   and then the switch command is input. After receiving the command input by the user, 
+#   the command is sent through mqtt with a Qos=1 message.
+# Then wait for the execution result command to be sent back remotely. 
+#   The topic of the command is the ID number + "result", and the payload is the execution result. 
+#   After receiving the return command, the result is printed. If the execution result is not received 
+#   for more than 10 seconds, timeout information will be output and the wait will end.
+# After completing such a complete interaction, re-enter the waiting state for the next round of interaction.
 
 import paho.mqtt.client as mqtt
 import time
 
-# MQTT Broker 地址
+# MQTT Broker Address
 broker_address = "sensorweb.us"
 # broker_address = "122.152.204.216"
-# MQTT Broker 端口
+# MQTT Broker Port
 broker_port = 1883
-# MQTT Broker 用户名
+# MQTT Broker Username
 broker_username = "algtest"
 # broker_username = "smart_test"
-# MQTT Broker 密码
+# MQTT Broker Password
 broker_password = "sensorweb711"
 # broker_password = "test777"
-# MQTT 订阅主题
+# MQTT Subscribe to topic
 sub_topic = ""
 control_topic=""
 
 message_received = False
 
-# 定义 MQTT 客户端
+# Define MQTT Client
 client = mqtt.Client()
 
-# 连接 MQTT Broker
+# Connect MQTT Broker
 client.username_pw_set(username=broker_username, password=broker_password)
 # client.connect(broker_address, broker_port)
 
-# MQTT 消息回调函数
+# MQTT Message callback function
 def on_message(client, userdata, message):
     global message_received
     print("execution feedback：", message.topic, "="+str(message.payload.decode()))
     message_received = True
 
-# 设置消息回调函数
+# Set message callback function
 client.on_message = on_message
 
 
-# 发布控制命令
+# issue control commands
 def publish_command(topic, command):
     client.publish(topic, command, qos=2)
     
 
-# 主循环
+# main loop
 while True:
     print("\r\n=====Start Controling your SmartPowerPlug Remotly=====")
-    # 用户输入设备 ID
+    # User enters device ID
     device_id = input("Please Input MAC Address of SmartPP：")
 
     if len(device_id) > 0 :
@@ -59,28 +65,27 @@ while True:
         control_topic="/SPP_relay/#" 
         sub_topic = "/SPP_relay_status/#"
 
-    # 用户输入控制命令
+    # User input control command
     command = input("Control Command(on/off/status):")
 
     client.connect(broker_address, broker_port)
-    # 订阅结果主题
+    # Subscribe to results topic
     client.subscribe(sub_topic)
 
     message_received = False
-    # 发布控制命令
+    # issue control commands
     publish_command(control_topic, command)
 
-    # 等待执行结果
+    # Wait for execution results
     start_time = time.time()
     while not message_received:
         if time.time() - start_time > 15:
-            print("超时未收到执行结果。")
+            print("Execution result not received after timeout。")
             break
         client.loop(timeout=1.0)
 
     client.unsubscribe(sub_topic)
-    # 重置消息接收标志
+    # Reset message receiving flag
     message_received = False
-    # 结束本次交互后断开连接
+    # Disconnect after completing this interaction
     client.disconnect()
-
