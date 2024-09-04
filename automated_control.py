@@ -74,8 +74,8 @@ broker_address = "sensorwebdata.engr.uga.edu"
 #"sensorweb.us"
 # broker_address = "122.152.204.216"
 # MQTT Broker Port
-broker_port = 8883
-#1883
+broker_port = 1883
+#8883
 # MQTT Broker Username
 broker_username = "aideveloper"
 #"algtest"
