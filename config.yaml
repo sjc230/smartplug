@@ -1,5 +1,7 @@
-broker: sensorweb.us
-port: 1883
+broker: sensorwebdata.engr.uga.edu
+#sensorweb.us
+port: 8883
+#1883
 topic_mapping: 
   # geophone: 
   #   database: shake
@@ -15,27 +17,33 @@ topic_mapping:
   #   dataname: value  
   #topic for SmartPowerPlug
   Voltage:
-    database: shake
+    database: waveform
+    #shake
     db_table: Voltage
     dataname: value 
   Current:
-    database: shake
+    database: waveform
+    #shake
     db_table: Current
     dataname: value 
   Power:
-    database: shake
+    database: waveform
+    #shake
     db_table: Power
     dataname: value 
   Reactive_Power:
-    database: shake
+    database: waveform
+    #shake
     db_table: Reactive_Power
     dataname: value 
   Apparent_Power:
-    database: shake
+    database: waveform
+    #shake
     db_table: Apparent_Power
     dataname: value 
   Power_Factor:
-    database: shake
+    database: waveform
+    #shake
     db_table: Power_Factor
     dataname: value 
   # waveform_Voltage:
@@ -47,33 +55,43 @@ topic_mapping:
   #   db_table: waveform_Current
   #   dataname: value 
   Volt_THD:
-    database: shake
+    database: waveform
+    #shake
     db_table: Volt_THD
     dataname: value 
   Curr_THD:
-    database: shake
+    database: waveform
+    #shake
     db_table: Curr_THD
     dataname: value 
   Volt_Fund:
-    database: shake
+    database: waveform
+    #shake
     db_table: Volt_Fund
     dataname: value 
   Curr_Fund:
-    database: shake
+    database: waveform
+    #shake
     db_table: Curr_Fund
     dataname: value 
   Power_Energy_Acc:
-    database: shake
+    database: waveform
+    #shake
     db_table: Power_Energy_Acc
     dataname: value 
   Reactive_Energy_Acc:
-    database: shake
+    database: waveform
+    #shake
     db_table: Reactive_Energy_Acc
     dataname: value 
   temperature:
-    database: shake
+    database: waveform
+    #shake
     db_table: temperature
     dataname: value 
-influx_ip: sensorweb.us 
-influx_user: algtest
-influx_pass: sensorweb711
+influx_ip: sensorwebdata.engr.uga.edu
+#sensorweb.us 
+influx_user: smartplug
+#algtest
+influx_pass: joint@122
+#sensorweb711

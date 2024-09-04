@@ -12,17 +12,73 @@
 
 import paho.mqtt.client as mqtt
 import time
+import pandas as pd
+from pathlib import Path
+
+# Set path to local directory
+p = Path('.')
+file_path = Path.is_file("plug_groups.csv")
+
+# Create list of grops
+group_list = []
+
+# Read in groups if they exist
+if file_path.is_file():
+    if file_path.stat().st_size == 0:
+        print("No groups are setup.")
+    else:
+        with file_path.open() as f:
+            for line in f:
+                line_as_string = line.rstrip('\n')  # Remove trailing newline
+                g_list = line_as_string.split(",")
+                group_list.append(g_list)
+
+
+# GROUP LIST FORMAT
+# [group name, group ON time, group OFF time, 1st plug MAC, ... , last plug MAC]                
+
+def add_group():
+    print("place holder")
+    return list
+
+def delete_group():
+    print("place holder")
+    return list
+
+def add_to_group():
+    print("place holder")
+    return list
+
+def remove_from_group():
+    print("place holder")
+    return list
+
+def set_group_ontime():
+    print("place holder")
+    return list
+
+def set_group_offtime():
+    print("place holder")
+    return list
+
+def write_lists_csv():
+    # Clear content of csv file
+    with file_path.open('w') as f:
+        pass
+    # Write current group content to csv file
+    pd.to_csv("plug_groups.csv")
+    return
 
 # MQTT Broker Address
-broker_address = "sensorweb.us"
+broker_address = "sensorwebdata.engr.uga.edu" #"sensorweb.us"
 # broker_address = "122.152.204.216"
 # MQTT Broker Port
-broker_port = 1883
+broker_port = 8883 #1883
 # MQTT Broker Username
-broker_username = "algtest"
+broker_username = "aideveloper" #"algtest"
 # broker_username = "smart_test"
 # MQTT Broker Password
-broker_password = "sensorweb711"
+broker_password = "aidev@122" #"sensorweb711"
 # broker_password = "test777"
 # MQTT Subscribe to topic
 sub_topic = ""
