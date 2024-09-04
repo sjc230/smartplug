@@ -70,15 +70,19 @@ def write_lists_csv():
     return
 
 # MQTT Broker Address
-broker_address = "sensorwebdata.engr.uga.edu" #"sensorweb.us"
+broker_address = "sensorwebdata.engr.uga.edu"
+#"sensorweb.us"
 # broker_address = "122.152.204.216"
 # MQTT Broker Port
-broker_port = 1883 #8883
+broker_port = 1883
+#8883
 # MQTT Broker Username
-broker_username = "aideveloper" #"algtest"
+broker_username = "aideveloper"
+#"algtest"
 # broker_username = "smart_test"
 # MQTT Broker Password
-broker_password = "aidev@122" #"sensorweb711"
+broker_password = "aidev@122"
+#"sensorweb711"
 # broker_password = "test777"
 # MQTT Subscribe to topic
 sub_topic = ""
