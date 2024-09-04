@@ -1,7 +1,7 @@
 broker: sensorwebdata.engr.uga.edu
 #sensorweb.us
-port: 1883
-#8883
+port: 8883
+#1883
 topic_mapping: 
   # geophone: 
   #   database: shake
