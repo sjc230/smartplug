@@ -17,14 +17,14 @@ from pathlib import Path
 
 # Set path to local directory
 p = Path('.')
-file_path = Path.is_file("plug_groups.csv")
+#file_path = Path.is_file("plug_groups.csv")
 
 # Create list of grops
 group_list = []
 
 # Read in groups if they exist
+"""
 if file_path.is_file():
-    if file_path.stat().st_size == 0:
         print("No groups are setup.")
     else:
         with file_path.open() as f:
@@ -32,7 +32,7 @@ if file_path.is_file():
                 line_as_string = line.rstrip('\n')  # Remove trailing newline
                 g_list = line_as_string.split(",")
                 group_list.append(g_list)
-
+"""
 
 # GROUP LIST FORMAT
 # [group name, group ON time, group OFF time, 1st plug MAC, ... , last plug MAC]                
@@ -73,7 +73,7 @@ def write_lists_csv():
 broker_address = "sensorwebdata.engr.uga.edu" #"sensorweb.us"
 # broker_address = "122.152.204.216"
 # MQTT Broker Port
-broker_port = 8883 #1883
+broker_port = 1883 #8883
 # MQTT Broker Username
 broker_username = "aideveloper" #"algtest"
 # broker_username = "smart_test"
