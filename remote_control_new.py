@@ -19,11 +19,11 @@ broker_address = "sensorweb.us"
 # MQTT Broker port
 broker_port = 1883
 # MQTT Broker username
-broker_username = ""
-# broker_username = "smart_test"
+#broker_username = ""
+broker_username = "smart_test"
 # MQTT Broker password
-broker_password = ""
-# broker_password = "test777"
+#broker_password = ""
+broker_password = "test777"
 # MQTT subscription topic
 sub_topic = ""
 control_topic = ""
