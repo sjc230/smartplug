@@ -13,10 +13,10 @@
 import paho.mqtt.client as mqtt
 import time
 import pandas as pd
-from pathlib import Path
+#from pathlib import Path
 
 # Set path to local directory
-p = Path('.')
+#p = Path('.')
 #file_path = Path.is_file("plug_groups.csv")
 
 # Create list of grops
