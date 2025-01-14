@@ -14,16 +14,16 @@ import paho.mqtt.client as mqtt
 import time
 
 # MQTT Broker address
-broker_address = "sensorweb.us"
+broker_address = "sensorweb.us" #"sensordata.engr.uga.edu" 
 # broker_address = "122.152.204.216"
 # MQTT Broker port
 broker_port = 1883
 # MQTT Broker username
 #broker_username = ""
-broker_username = "smart_test"
+broker_username = "" #"smart_test"
 # MQTT Broker password
 #broker_password = ""
-broker_password = "test777"
+broker_password = "" #test777"
 # MQTT subscription topic
 sub_topic = ""
 control_topic = ""
